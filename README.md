@@ -35,9 +35,9 @@ Prometheus supports operations.
 ## Prerequisite
 
 - [Docker](https://docs.docker.com/)
-    - ```bash
+    ```
     docker pull prom/prometheus
     ```
-    - ```bash
+    ```
     docker pull grafana/grafana
-    ``` 
+    ```
