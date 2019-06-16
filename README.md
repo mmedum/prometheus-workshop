@@ -1,12 +1,9 @@
 # Prometheus Workshop
----
 
 ## ToC
----
 
 
 ## Intro
----
 
 This workshop will cover
 
@@ -29,7 +26,6 @@ The outcome should be a good understanding of how metrics scraped through
 Prometheus supports operations.
 
 ## Parts
----
 
 - [Part 1](TBD): TBD
 - [Part 2](TBD): TBD
@@ -37,7 +33,6 @@ Prometheus supports operations.
 - [Part 4](TBD): TBD
 
 ## Prerequisite
----
 
 - [Docker](https://docs.docker.com/)
     - ```bash
