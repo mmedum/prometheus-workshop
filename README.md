@@ -11,7 +11,7 @@ This workshop will cover
 - Extending a demo application with Prometheus scraping using built-in and
   custom metrics
 - Adding Grafana dashboard to represent Prometheus metrics
-- Defining rules for triggering of alerts
+- Defining rules for triggering alerts
 - Quick overview of exporters to infrastructure tooling
 
 This workshop focuses on presenting a modern approach for collecting metrics
@@ -44,3 +44,5 @@ tools and instrumenting code that uses those tools.
 - [Prometheus Documentation](https://prometheus.io/docs/)
 - [Grafana Documentation](https://grafana.com/docs/)
 - [Prometheus/Grafana live-demo](http://demo.robustperception.io:3000/)
+- [Prometheus Blog
+  Series](https://blog.pvincent.io/2017/12/prometheus-blog-series-part-1-metrics-and-labels/)
