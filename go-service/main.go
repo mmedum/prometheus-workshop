@@ -32,8 +32,10 @@ func Routes() *chi.Mux {
 	})
 	router.Use(cors.Handler)
 
+	router.Mount("/metrics", promhttp.Handler())
+	router.Mount("/health", health.Routes())
+
 	router.Route("/v1", func(r chi.Router) {
-		r.Mount("/api/metrics", promhttp.Handler())
 		r.Mount("/api/health", health.Routes())
 	})
 
