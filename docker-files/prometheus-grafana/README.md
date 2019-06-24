@@ -2,6 +2,7 @@
 
 (Remember to build [go-service](../../go-service) and
 [dotnet-service](../../dotnet-service))
+(Remember to change `docker health` in `prometheus.yml` based on OS)
 
 To start the services
 
@@ -23,4 +24,5 @@ is only running locally, so choose an easy password.
 
 From the `Grafana` startpage, choose `Add data source`, search for `Prometheus`
 and set the `URL: http://prometheus:9090` thereby press `Save & Test` and
-hopefully a green bar with the text `Data source is working` shows up.
+hopefully a green bar with the text `Data source is working` shows up and with
+that the local deployment is done.

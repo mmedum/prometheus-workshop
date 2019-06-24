@@ -20,6 +20,9 @@ scrape_configs:
          # metrics_path defaults to '/metrics'
          # scheme defaults to 'http'.
 
+    # docker.for.mac.localhost:9090 -> MAC
+    # docker.for.win.localhost:9090 -> WIN
+    
     static_configs:
       - targets: ['docker.for.mac.localhost:9090']
 

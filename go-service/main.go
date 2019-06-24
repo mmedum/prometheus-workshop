@@ -44,7 +44,7 @@ func Routes() *chi.Mux {
 
 func main() {
 	router := Routes()
-	port := 8080
+	port := 80
 
 	log.Fatalln(http.ListenAndServe(fmt.Sprintf(":%v", port), router))
 	log.Println("Running")
