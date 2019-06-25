@@ -3,7 +3,9 @@ package main
 import (
 	"fmt"
 	"log"
+	"math/rand"
 	"net/http"
+	"time"
 
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
@@ -13,6 +15,24 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
+func pong(w http.ResponseWriter, r *http.Request) {
+	response := make(map[string]string)
+	response["message"] = "pong"
+
+	rand.Seed(time.Now().Unix())
+
+	var responseCodes [3]int
+	responseCodes[0] = 200
+	responseCodes[1] = 500
+	responseCodes[2] = 503
+
+	responseCode := responseCodes[rand.Intn(len(responseCodes))]
+
+	render.Status(r, responseCode)
+
+	render.JSON(w, r, response)
+}
+
 func Routes() *chi.Mux {
 	router := chi.NewRouter()
 	router.Use(
@@ -21,6 +41,7 @@ func Routes() *chi.Mux {
 		middleware.DefaultCompress,
 		middleware.RedirectSlashes,
 		middleware.Recoverer,
+		middleware.RequestID,
 	)
 
 	cors := cors.New(cors.Options{
@@ -36,7 +57,7 @@ func Routes() *chi.Mux {
 	router.Mount("/health", health.Routes())
 
 	router.Route("/v1", func(r chi.Router) {
-		r.Mount("/api/health", health.Routes())
+		r.Get("/ping", pong)
 	})
 
 	return router
@@ -44,7 +65,7 @@ func Routes() *chi.Mux {
 
 func main() {
 	router := Routes()
-	port := 8080
+	port := 80
 
 	log.Fatalln(http.ListenAndServe(fmt.Sprintf(":%v", port), router))
 	log.Println("Running")
