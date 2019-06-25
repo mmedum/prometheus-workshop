@@ -25,7 +25,7 @@ tools and instrumenting code that uses those tools.
 ## Parts
 
 - [Part 1](part1/README.md): Prometheus and Grafana
-- [Part 2](part2/instrumenting-code.md): Instrumenting Code
+- [Part 2](part2/README.md): Instrumenting Code
 - [Part 3](part3/metrics.md): TBD
 - [Part 4](part4/alerts.md): TBD
 
