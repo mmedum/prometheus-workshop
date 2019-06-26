@@ -1,7 +1,7 @@
 # Local Prometheus and Grafana
 
-(Remember to build [go-service](../../go-service) and
-[dotnet-service](../../dotnet-service))
+(Remember to build [go-service](../../go-service),
+[dotnet-service](../../dotnet-service) and [http-simulator](../../http-simulator))
 (Remember to change `docker health` in `prometheus.yml` based on OS)
 
 To start the services
