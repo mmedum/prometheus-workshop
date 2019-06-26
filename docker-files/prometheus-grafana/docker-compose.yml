@@ -13,6 +13,12 @@ services:
     ports:
       - "8081:80"
 
+  http-simulator:
+    image: http-simulator:latest
+    container_name: http-simulator
+    networks:
+      - public
+
   dotnet-service:
     image: dotnet-service:latest
     container_name: dotnet-service

@@ -1,0 +1,8 @@
+version: '3.7'
+
+services:
+  http-simulator:
+    image: http-simulator
+    container_name: http-simulator
+    network_mode: bridge
+    build: .
