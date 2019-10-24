@@ -8,21 +8,23 @@ or rather instrumented to be scraped by Prometheus.
 
 ## Setup
 
-Before starting any of the work, please remember to build [go-service](../go-service) 
-and [dotnet-service](../dotnet-service)
+Before really starting any of the work, please remember to build 
+
+- [go-service](../services/go-service) 
+- [dotnet-service](../services/dotnet-service)
 
 Navigate to the [docker-files](../docker-files/prometheus-grafana/) folder and
-look at the `README.md` for spinning up your own local prometheus instance.
+look at the `readme.md` for spinning up your own local prometheus instance.
 
 ## Prometheus UI
 
 When the local instance is running, navigate to the Prometheus UI where you
 should be presented with the following tabs:
 
-- Alerts: List of all alerting rules and the current status for each alert
-- Graph: It is possible to query timeseries data
-- Status: Current status of current scraping targets.
-- Help: Link to Prometheus documentation
+- `Alerts`, which list all alerting rules and the current status for each alert
+- `Graph`, where it is possible to query the timeseries data
+- `Status`, which represents the current status of scraping targets.
+- `Help`, which links to the Prometheus documentation
 
 Navigate to `Status -> Targets` and look at the four targets, which hopefully
 have a status of `UP`. Every target which Prometheus should scrape is defined in
