@@ -15,13 +15,22 @@ scrape_configs:
 
     static_configs:
       - targets: ['localhost:9090']
-  
+
   - job_name: 'docker'
          # metrics_path defaults to '/metrics'
          # scheme defaults to 'http'.
 
+    # docker.for.mac.localhost:9090 -> MAC
+    # docker.for.win.localhost:9090 -> WIN
+    # localhost -> Linux
+
     static_configs:
-      - targets: ['docker.for.win.localhost:9090']
+      - targets: ['docker.for.mac.localhost:9090']
+
+  - job_name: 'go-service'
+
+    static_configs:
+      - targets: ['go-service:80']
 
   - job_name: 'dotnet-service'
 

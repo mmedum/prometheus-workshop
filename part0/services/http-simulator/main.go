@@ -7,15 +7,14 @@ import (
 	"time"
 )
 
-func MakeRequest() {
-	log.Println("Go Routine")
+func MakeRequest(url string) {
 	rand.Seed(time.Now().UnixNano())
 	for {
 		n := rand.Intn(10) // n will be between 0 and 10
 		time.Sleep(time.Duration(n) * time.Second)
-		_, err := http.Get("http://go-service/v1/ping")
+		_, err := http.Get(url)
 		if err != nil {
-			log.Println("Not possible to do request")
+			log.Println("Not possible to request service")
 		}
 	}
 }
@@ -23,7 +22,8 @@ func MakeRequest() {
 func main() {
 	log.Println("Starting up")
 	for i := 0; i < 2; i++ {
-		go MakeRequest()
+		go MakeRequest("http://go-service/v1/ping")
+		go MakeRequest("http://dotnet-service/api/sample/")
 	}
 	c := make(chan struct{})
 	<-c

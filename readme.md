@@ -21,10 +21,11 @@ tools and instrumenting code that uses those tools.
 
 ## Parts
 
-- [Part 1](part1/README.md): Prometheus and Grafana
-- [Part 2](part2/README.md): Instrumenting Code
-- [Part 3](part3/README.md): Grafana Dashboards
-- [Part 4](part4/README.md): Alerting
+- [Part 0](part0/readme.md): Setup
+- [Part 1](part1/readme.md): Prometheus and Grafana
+- [Part 2](part2/readme.md): Instrumenting Code
+- [Part 3](part3/readme.md): Grafana Dashboards
+- [Part 4](part4/readme.md): Alerting
 
 ## Prerequisite
 

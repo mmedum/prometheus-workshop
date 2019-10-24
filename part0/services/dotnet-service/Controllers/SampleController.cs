@@ -9,28 +9,28 @@ namespace dotnetservice.Controllers
     {
         private static readonly Counter CallsCounter = 
         Metrics
-    	.CreateCounter(
+        .CreateCounter(
         "dotnetservice_samplecontroller_counter", 
         "Number of calls to counter in sample controller.");
 
         private static readonly Gauge SampleGauge = Metrics
-	    .CreateGauge("dotnetservice_samplegauge", "Gauge set by api.");
+            .CreateGauge("dotnetservice_samplegauge", "Gauge set by api.");
 
         [HttpGet("")]
         public IActionResult Get(){
-            return NoContent();
+            return Ok();
         }
 
         [HttpGet("counter")]
         public IActionResult Counter(){
             CallsCounter.Inc();
-            return NoContent();
+            return Ok();
         }
 
         [HttpPost("gauge")]
         public IActionResult Gauge([FromForm] int absoluteNumber){
             SampleGauge.Set(absoluteNumber);
-            return NoContent();
+            return Ok();
         }
     }
 }

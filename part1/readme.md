@@ -6,17 +6,13 @@ extended through a modular approach (Exporters, Dashboard, Alertmanager)
 Prometheus uses a white box monitoring approach, where applications is aware of
 or rather instrumented to be scraped by Prometheus.
 
-## Setup
+## Note!
 
-Before really starting any of the work, please remember to build 
-
-- [go-service](../services/go-service) 
-- [dotnet-service](../services/dotnet-service)
-
-Navigate to the [docker-files](../docker-files/prometheus-grafana/) folder and
-look at the `readme.md` for spinning up your own local prometheus instance.
+Before really starting any of the work, remember to complete [Part 0](../part0)
 
 ## Prometheus UI
+
+The running `Prometheus` is located at `localhost:9090`
 
 When the local instance is running, navigate to the Prometheus UI where you
 should be presented with the following tabs:
@@ -55,6 +51,7 @@ scrape_configs:
 
     # docker.for.mac.localhost:9090 -> MAC
     # docker.for.win.localhost:9090 -> WIN
+    # localhost -> Linux
 
     static_configs:
       - targets: ['docker.for.mac.localhost:9090']

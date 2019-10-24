@@ -1,15 +1,23 @@
 version: '3.7'
 
-
-networks:
-  public: {}
-
 services:
   go-service:
     image: go-service:latest
     container_name: go-service
     networks:
       - public
+    build:
+      context: services/go-service/.
+    ports:
+      - "8080:80"
+
+  dotnet-service:
+    image: dotnet-service:latest
+    container_name: dotnet-service
+    networks:
+      - public
+    build:
+      context: services/dotnet-service/.
     ports:
       - "8081:80"
 
@@ -18,14 +26,8 @@ services:
     container_name: http-simulator
     networks:
       - public
-
-  dotnet-service:
-    image: dotnet-service:latest
-    container_name: dotnet-service
-    networks:
-      - public
-    ports:
-      - "8080:80"
+    build:
+      context: services/http-simulator/.
 
   prometheus:
     image: prom/prometheus:latest
@@ -35,7 +37,7 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - "./prometheus.yml:/etc/prometheus/prometheus.yml"
+      - "./configs/prometheus.yml:/etc/prometheus/prometheus.yml"
 
   grafana:
     image: grafana/grafana:latest
@@ -46,4 +48,7 @@ services:
       - "3000:3000"
     volumes:
       - "./grafana-data:/var/lib/grafana"
-      - "./grafana.ini:/etc/grafana/grafana.ini"
+      - "./configs/grafana.ini:/etc/grafana/grafana.ini"
+
+networks:
+  public: {}
