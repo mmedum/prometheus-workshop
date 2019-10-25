@@ -30,9 +30,9 @@ scrape_configs:
   - job_name: 'go-service'
 
     static_configs:
-      - targets: ['go-service:80']
+      - targets: ['go-service']
 
   - job_name: 'dotnet-service'
 
     static_configs:
-      - targets: ['dotnet-service:80']
+      - targets: ['dotnet-service']

@@ -59,12 +59,12 @@ scrape_configs:
   - job_name: 'go-service'
 
     static_configs:
-      - targets: ['go-service:80']
+      - targets: ['go-service']
 
   - job_name: 'dotnet-service'
 
     static_configs:
-      - targets: ['dotnet-service:80']
+      - targets: ['dotnet-service']
 ```
 
 Prometheus assumes that every target has an URL with a `/metrics` path defined,
@@ -75,6 +75,8 @@ targets, which is being scraped currently.
 
 ### Exercise
 
+- Add the `python-service` as a new scrape target in the `prometheus.yml` file
+  and start all the services again.
 - Add another `dotnet-service` and `go-service` to `docker-compose.yml` and
   extend `prometheus.yml` to scrape the new targets. Remember that since every
   service is running in docker, it is possible to use the name of the service,
