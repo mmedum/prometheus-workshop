@@ -19,7 +19,7 @@ through Grafana.
 The workshop is very hands-on, which means the focus is doing exercises with the
 tools and instrumenting code that uses those tools.
 
-[Architecture](images/prometheus_workshop.png)
+![Architecture](images/prometheus_workshop.png)
 
 ## Parts
 
