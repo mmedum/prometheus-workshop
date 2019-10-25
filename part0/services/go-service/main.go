@@ -15,16 +15,13 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
+var responseCodes [3]int
+
 func pong(w http.ResponseWriter, r *http.Request) {
 	response := make(map[string]string)
 	response["message"] = "pong"
 
 	rand.Seed(time.Now().Unix())
-
-	var responseCodes [3]int
-	responseCodes[0] = 200
-	responseCodes[1] = 500
-	responseCodes[2] = 503
 
 	responseCode := responseCodes[rand.Intn(len(responseCodes))]
 
@@ -63,7 +60,14 @@ func Routes() *chi.Mux {
 	return router
 }
 
+func initResponseCodes() {
+	responseCodes[0] = 200
+	responseCodes[1] = 500
+	responseCodes[2] = 503
+}
+
 func main() {
+	initResponseCodes()
 	router := Routes()
 	port := 80
 

@@ -21,5 +21,4 @@ USER webserver
 FROM scratch
 COPY --from=builder /build/webserver /app/
 WORKDIR /app
-EXPOSE 8080
 CMD ["./webserver"]

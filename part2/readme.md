@@ -20,11 +20,6 @@ func pong(w http.ResponseWriter, r *http.Request) {
 
 	rand.Seed(time.Now().Unix())
 
-	var responseCodes [3]int
-	responseCodes[0] = 200
-	responseCodes[1] = 500
-	responseCodes[2] = 503
-
 	responseCode := responseCodes[rand.Intn(len(responseCodes))]
 
 	render.Status(r, responseCode)
@@ -62,16 +57,29 @@ func initPrometheusMetric() {
 }
 ```
 
+This function should be called in the `main` function, such that prometheus
+tracks the new variable.
+
+```go
+func main() {
+	initResponseCodes()
+
+    initPrometheusMetric()
+
+	router := Routes()
+	port := 80
+}
+```
+
 With that, it is needed to instrument the `pong` function, so that every single
-response increment a counter with the return statuscode as key.
+response increments the counter with the return statuscode as key.
 
 ```go
 func pong(w http.ResponseWriter, r *http.Request) {
 ...
-	responseCodes[1] = 500
-	responseCodes[2] = 503
 
 	responseCode := responseCodes[rand.Intn(len(responseCodes))]
+
 	pongCount.WithLabelValues(strconv.Itoa(responseCode)).Inc()
 
 	render.Status(r, responseCode)
@@ -79,12 +87,14 @@ func pong(w http.ResponseWriter, r *http.Request) {
 ```
 
 With that code added, build a new image of the `go-service` and run
-`docker-compose` again, this should give extra metrics paths, but before
+`docker-compose up` again, this should give extra metrics paths, but before
 checking it would be a good idea to generate some traffic, by doing `GET`
 requests on `localhost:8081/v1/ping`.
 
-After a couple of hits, look at the metrics of the go service, it should now
-have a couple of extra metrics.
+After a couple of hits, look at the metrics of the go service by navigating to
+[localhost:8080/metrics](localhost:8080/metrics), and search for the new
+variable `ping_total_number_of_requests`, this should output something like
+this.
 
 ```
 # HELP ping_total_number_of_requests Number of ping requests.
