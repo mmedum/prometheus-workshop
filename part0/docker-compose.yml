@@ -11,6 +11,16 @@ services:
     ports:
       - "8080:80"
 
+  python-service:
+    image: python-service:latest
+    container_name: python-service
+    networks:
+      - public
+    build:
+      context: services/python-service/.
+    ports:
+      - "8081:80"
+
   dotnet-service:
     image: dotnet-service:latest
     container_name: dotnet-service
@@ -19,7 +29,7 @@ services:
     build:
       context: services/dotnet-service/.
     ports:
-      - "8081:80"
+      - "8082:80"
 
   http-simulator:
     image: http-simulator:latest
