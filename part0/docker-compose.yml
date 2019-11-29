@@ -11,6 +11,14 @@ services:
     ports:
       - "8080:80"
 
+  go-service1:
+    image: go-service:latest
+    container_name: go-service1
+    networks:
+      - public
+    ports:
+      - "8083:80"
+
   python-service:
     image: python-service:latest
     container_name: python-service
@@ -57,8 +65,14 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - "./grafana-data:/var/lib/grafana"
+      - "grafana-storage:/var/lib/grafana"
       - "./configs/grafana.ini:/etc/grafana/grafana.ini"
 
 networks:
   public: {}
+
+volumes:
+  grafana-storage:
+
+
+
