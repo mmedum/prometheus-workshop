@@ -9,7 +9,8 @@ The `go-service` has defined a `/v1/ping` endpoint, when called with a `GET`
 request, returns json and a random status code. The idea is to create a counter
 metric, which just counts the number of calls to the `/v1/ping` endpoint.
 
-In the `go-service` folder, locate the file `main.go` and open it. The code for
+In the `go-service` folder (inside services folder of part0 of this course),
+locate the file `main.go` and open it. The code for
 responding to a `GET` call on `/v1/ping` is as follows.
 
 ```go
@@ -30,7 +31,10 @@ func pong(w http.ResponseWriter, r *http.Request) {
 
 ```
 
-First it will be needed to define the Prometheus variable, which should store
+First it will be needed to include the `"strconv"` and
+`"github.com/prometheus/client_golang/prometheus"` package in the import list.
+
+Then, define the Prometheus variable, which should store
 the total number of requests.
 
 ```go
@@ -48,7 +52,7 @@ var (
 The `pongCount` variable is defined with a parameter `status`, such that every
 single response code can be isolated and summarized also.
 
-And a `init` function should be created, so the variable is registered to
+And an `init` function should be created, so the variable is registered to
 prometheus on startup.
 
 ```go
@@ -108,4 +112,4 @@ ping_total_number_of_requests{status="503"} 1
 - Prometheus supports many different metrics types, look at the `go-service` and
   `dotnet-service` and create a couple of new metrics. The different types can
   be found [here](https://prometheus.io/docs/concepts/metric_types/). Be very
-  creative! 
+  creative!
