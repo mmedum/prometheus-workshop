@@ -1,4 +1,4 @@
-FROM golang:1.13-alpine as builder
+FROM golang:1.17-alpine as builder
 
 LABEL maintainer="Mark Medum Bundgaard <mmedum@gmail.com>"
 

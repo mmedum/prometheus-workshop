@@ -49,10 +49,10 @@ how the services should be started, and in our case connected.
 
 ### Commands
 
-The three following commands should be enough for setting up the environment.
+The following three commands should be enough for setting up the environment.
 When running `docker-compose up` the first time, docker will `build`, `tag`,
 `download` and `run` each service and place them in the same network called
-`public`, which will make it easy for referring services later.
+`public`, which will make it easy for referring to services later.
 
 #### Start
 
