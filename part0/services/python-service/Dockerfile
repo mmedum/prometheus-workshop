@@ -1,4 +1,4 @@
-FROM python:3.12
+FROM python:3.11
 LABEL maintainer="Mark Medum Bundgaard <mmedum@gmail.com>"
 
 WORKDIR api
