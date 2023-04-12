@@ -6,7 +6,7 @@ extended through a modular approach (Exporters, Dashboard, Alertmanager)
 Prometheus uses a white box monitoring approach, where applications is aware of
 or rather instrumented to be scraped by Prometheus.
 
-## Note!
+## Note
 
 Before really starting any of the work, remember to complete [Part 0](../part0)
 
@@ -28,8 +28,8 @@ have a status of `UP`. Every target which Prometheus should scrape is defined in
 
 ```yaml
 global:
-  scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
-  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  scrape_interval:     15s # Set the scrape interval to every 15 seconds.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds.
   # scrape_timeout is set to the global default (10s).
 
   # Attach these labels to any time series or alerts when communicating with
@@ -73,7 +73,7 @@ so Prometheus can pull/scrape the metrics.
 By navigating to `Graph` and query `up`, it should be possible to see the
 targets, which is being scraped currently.
 
-### Exercise
+### Prometheus Exercise
 
 - Add the `python-service` as a new scrape target in the `prometheus.yml` file
   and start all the services again.
@@ -94,7 +94,7 @@ third party dashboard, where most of them can be found at [Grafana
 Labs](https://grafana.com/dashboards), in this workshop it is recommended using
 `6671` for getting all `go` metrics.
 
-### Exercise
+### Grafana Exercise
 
 - Add another panel to the current dashboard, this should visualize the `up`
-  parameter from prometheus.
+  parameter from Prometheus.

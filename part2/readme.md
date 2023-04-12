@@ -15,16 +15,16 @@ responding to a `GET` call on `/v1/ping` is as follows.
 ```go
 ...
 func pong(w http.ResponseWriter, r *http.Request) {
-	response := make(map[string]string)
-	response["message"] = "pong"
+ response := make(map[string]string)
+ response["message"] = "pong"
 
-	rand.Seed(time.Now().Unix())
+ rand.Seed(time.Now().Unix())
 
-	responseCode := responseCodes[rand.Intn(len(responseCodes))]
+ responseCode := responseCodes[rand.Intn(len(responseCodes))]
 
-	render.Status(r, responseCode)
+ render.Status(r, responseCode)
 
-	render.JSON(w, r, response)
+ render.JSON(w, r, response)
 }
 ...
 
@@ -35,13 +35,13 @@ the total number of requests.
 
 ```go
 var (
-	pongCount = prometheus.NewCounterVec(
-		prometheus.CounterOpts{
-			Name: "ping_total_number_of_requests",
-			Help: "Number of ping requests.",
-		},
-		[]string{"status"},
-	)
+ pongCount = prometheus.NewCounterVec(
+  prometheus.CounterOpts{
+   Name: "ping_total_number_of_requests",
+   Help: "Number of ping requests.",
+  },
+  []string{"status"},
+ )
 )
 ```
 
@@ -49,25 +49,25 @@ The `pongCount` variable is defined with a parameter `status`, such that every
 single response code can be isolated and summarized also.
 
 And a `init` function should be created, so the variable is registered to
-prometheus on startup.
+Prometheus on startup.
 
 ```go
 func initPrometheusMetric() {
-	prometheus.MustRegister(pongCount)
+ prometheus.MustRegister(pongCount)
 }
 ```
 
-This function should be called in the `main` function, such that prometheus
+This function should be called in the `main` function, such that Prometheus
 tracks the new variable.
 
 ```go
 func main() {
-	initResponseCodes()
+ initResponseCodes()
 
     initPrometheusMetric()
 
-	router := Routes()
-	port := 80
+ router := Routes()
+ port := 80
 }
 ```
 
@@ -78,11 +78,11 @@ response increments the counter with the return statuscode as key.
 func pong(w http.ResponseWriter, r *http.Request) {
 ...
 
-	responseCode := responseCodes[rand.Intn(len(responseCodes))]
+ responseCode := responseCodes[rand.Intn(len(responseCodes))]
 
-	pongCount.WithLabelValues(strconv.Itoa(responseCode)).Inc()
+ pongCount.WithLabelValues(strconv.Itoa(responseCode)).Inc()
 
-	render.Status(r, responseCode)
+ render.Status(r, responseCode)
 ...
 ```
 
@@ -96,7 +96,7 @@ After a couple of hits, look at the metrics of the go service by navigating to
 variable `ping_total_number_of_requests`, this should output something like
 this.
 
-```
+```text
 # HELP ping_total_number_of_requests Number of ping requests.
 # TYPE ping_total_number_of_requests counter
 ping_total_number_of_requests{status="500"} 6
@@ -108,4 +108,4 @@ ping_total_number_of_requests{status="503"} 1
 - Prometheus supports many different metrics types, look at the `go-service` and
   `dotnet-service` and create a couple of new metrics. The different types can
   be found [here](https://prometheus.io/docs/concepts/metric_types/). Be very
-  creative! 
+  creative!
