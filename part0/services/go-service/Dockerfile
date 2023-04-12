@@ -1,5 +1,4 @@
-FROM golang:1.17-alpine as builder
-
+FROM golang:1.20.3-alpine as builder
 LABEL maintainer="Mark Medum Bundgaard <mmedum@gmail.com>"
 
 # To fix go get and build with cgo

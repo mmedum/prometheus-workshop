@@ -1,12 +1,13 @@
+---
 global:
-  scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
-  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  scrape_interval: 15s  # Set the scrape interval to every 15 seconds
+  evaluation_interval: 15s  # Evaluate rules every 15 seconds.
   # scrape_timeout is set to the global default (10s).
 
   # Attach these labels to any time series or alerts when communicating with
   # external systems (federation, remote storage, Alertmanager).
   external_labels:
-      monitor: 'Alertmanager'
+    monitor: 'Alertmanager'
 
 rule_files:
 
@@ -17,15 +18,15 @@ scrape_configs:
       - targets: ['localhost:9090']
 
   - job_name: 'docker'
-         # metrics_path defaults to '/metrics'
-         # scheme defaults to 'http'.
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
 
     # docker.for.mac.localhost:9090 -> MAC
     # docker.for.win.localhost:9090 -> WIN
     # localhost -> Linux
 
     static_configs:
-      - targets: ['docker.for.mac.localhost:9090']
+      - targets: ['localhost']
 
   - job_name: 'go-service'
 

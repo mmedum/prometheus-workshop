@@ -4,7 +4,7 @@ import prometheus_client
 
 app = FastAPI(title="Python Service")
 
-CONTENT_TYPE_LATEST = str('text/plain; version=0.0.4; charset=utf-8')
+CONTENT_TYPE_LATEST = str("text/plain; version=0.0.4; charset=utf-8")
 
 
 @app.get("/")

@@ -1,3 +1,4 @@
+---
 version: '3.7'
 
 services:
@@ -48,8 +49,6 @@ services:
       - public
     build:
       context: services/http-simulator/.
-    build:
-      context: services/http-simulator/.
 
   prometheus:
     image: prom/prometheus:latest
@@ -77,6 +76,3 @@ networks:
 
 volumes:
   grafana-storage:
-
-
-

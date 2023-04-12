@@ -2,14 +2,16 @@
 # dotnet-service
 
 ## How to build Docker image
- ```
+
+ ```bash
  docker build . -t dotnet-service
  ```
- 
+
 ## How to run
 
 Go to docker-files folder and run
-```
+
+```bash
 docker-compose up
 ```
 

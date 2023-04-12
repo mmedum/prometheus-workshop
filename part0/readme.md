@@ -58,13 +58,13 @@ When running `docker-compose up` the first time, docker will `build`, `tag`,
 
 For `starting` the services in the foreground
 
-```
+```bash
 docker-compose up
 ```
 
 For `starting` the services in the background
 
-```
+```bash
 docker-compose up -d
 ```
 
@@ -72,7 +72,7 @@ docker-compose up -d
 
 For `rebuilding` the services after a code change
 
-```
+```bash
 docker-compose up --build
 ```
 
@@ -80,7 +80,7 @@ docker-compose up --build
 
 For `stopping` the services fully.
 
-```
+```bash
 docker-compose down
 ```
 
