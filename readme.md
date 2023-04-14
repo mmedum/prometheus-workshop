@@ -32,8 +32,8 @@ tools and instrumenting code that uses those tools.
 ## Prerequisite
 
 - [Docker](https://docs.docker.com/)
-    - Prometheus `docker pull prom/prometheus`
-    - Grafana `docker pull grafana/grafana`
+  - Prometheus `docker pull prom/prometheus`
+  - Grafana `docker pull grafana/grafana`
 
 ## Additional resources
 
